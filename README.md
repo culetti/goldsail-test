@@ -7,4 +7,4 @@ Sito Jekyll pubblicato con GitHub Pages: https://culetti.github.io/goldsail-test
 - `_data/sito.yml` annuncio in evidenza, indirizzo dei moduli, contatti
 - `admin/` pannello di gestione (Sveltia CMS): https://culetti.github.io/goldsail-test/admin/
 
-Versioni precedenti del design: `/v1/`, `/v2/`, `/v3/`.
+Versioni precedenti del design: `/v1/`, `/v2/`.
