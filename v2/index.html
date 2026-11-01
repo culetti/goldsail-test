@@ -1,0 +1,609 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gold Sail Ravenna · Bavaria Yachts a Marina di Ravenna</title>
+<meta name="description" content="Gold Sail Ravenna, importatore Bavaria Yachts dal 2003: barche a vela nuove in pronta consegna, usato selezionato, ricambi e assistenza in Via Marinara 77, Marina di Ravenna.">
+<meta property="og:title" content="Gold Sail Ravenna · Bavaria Yachts">
+<meta property="og:description" content="Barche a vela nuove in pronta consegna, usato scelto, ricambi e assistenza nel porto di Marina di Ravenna.">
+<meta property="og:image" content="img/g-hero.jpg">
+<link rel="icon" href="img/logo.png">
+<link rel="preload" href="fonts/bodoni-moda-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/jost-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Bodoni Moda";font-weight:500;font-style:normal;font-display:swap;src:url(fonts/bodoni-moda-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Bodoni Moda";font-weight:500;font-style:italic;font-display:swap;src:url(fonts/bodoni-moda-latin-500-italic.woff2) format("woff2")}
+@font-face{font-family:"Jost";font-weight:400;font-style:normal;font-display:swap;src:url(fonts/jost-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Jost";font-weight:500;font-style:normal;font-display:swap;src:url(fonts/jost-latin-500-normal.woff2) format("woff2")}
+
+:root{
+  /* il verde bottiglia e l'oro della vela del logo: la stanza buia è verde */
+  --bg:#0c2318;
+  --surface:#12301f;
+  --surface-2:#1a3d29;
+  --ink:#eef1ec;
+  --muted:#b3c2b8;
+  --accent:#e0a419;
+  --accent-ink:#0c2318;
+  --inv-bg:#eef1ec;
+  --inv-ink:#0c2318;
+  --inv-muted:#46564c;
+
+  --display:"Bodoni Moda", "Didot", Georgia, serif;
+  --text:"Jost", system-ui, sans-serif;
+
+  --step-small:clamp(0.8125rem,0.79rem + 0.1vw,0.875rem);
+  --step-body:clamp(1.0625rem,1rem + 0.25vw,1.1875rem);
+  --step-lead:clamp(1.25rem,1.1rem + 0.7vw,1.625rem);
+  --step-head:clamp(2.25rem,1.3rem + 3.6vw,4.5rem);
+
+  --m:clamp(16px,2.2vw,32px);
+  --ease:cubic-bezier(.16,.84,.24,1);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--text);font-size:var(--step-body);line-height:1.6;letter-spacing:.01em}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+h1,h2,h3{margin:0;font-weight:inherit}
+p,figure{margin:0}
+ul,ol{margin:0;padding:0;list-style:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+::selection{background:var(--accent);color:var(--accent-ink)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.disp{font-family:var(--display);font-weight:500;letter-spacing:-0.02em;line-height:.95}
+.photo{filter:brightness(.86) contrast(1.05)}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 30px;background:var(--accent);color:var(--accent-ink);font:inherit;font-size:18px;font-weight:500;text-decoration:none;border:0;cursor:pointer;transition:transform .2s var(--ease),background-color .2s var(--ease)}
+.btn:hover{background:#ecb53c}
+.btn:active{transform:translateY(2px)}
+.lnk{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-decoration-thickness:2px;text-underline-offset:6px;transition:color .2s}
+.lnk:hover{color:var(--accent)}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--bg)}
+.hero-img{position:absolute;inset:0}
+.hero-img img{width:100%;height:100%;object-fit:cover;object-position:45% 50%;filter:brightness(.62) contrast(1.08) saturate(.9);animation:breathe 30s ease-in-out infinite alternate}
+@keyframes breathe{from{transform:scale(1.02)}to{transform:scale(1.09) translate(-1%,-1%)}}
+.hero nav{position:absolute;z-index:3;top:32px;right:var(--m)}
+.hero nav ul{display:flex;gap:28px;font-size:15px}
+.hero nav a{text-decoration:none;color:var(--ink);padding:6px 0;text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:6px;transition:text-decoration-color .2s}
+.hero nav a:hover{text-decoration-color:var(--accent)}
+.hero h1{position:absolute;inset:0;z-index:1;font-size:clamp(140px,13vw,200px);line-height:.85;color:var(--ink)}
+.hero h1 .ln{position:absolute;display:block;overflow:hidden;padding:0 .04em .06em}
+.hero h1 .ln>span{display:block;animation:rise .95s var(--ease) both}
+.hero h1 .l1{left:var(--m);top:56px}
+.hero h1 .l2{right:var(--m);bottom:16px}
+.hero h1 .l2>span{animation-delay:.11s}
+.hero h1 i{font-style:italic;color:var(--accent)}
+@keyframes rise{from{transform:translateY(105%)}to{transform:none}}
+.hero-copy{position:absolute;z-index:2;left:var(--m);top:44%;max-width:38ch;animation:fadeup .7s .25s var(--ease) both}
+.hero-copy p{font-size:18px;color:var(--ink)}
+.hero-copy p strong{font-weight:500}
+.hero-copy .btn{margin-top:24px}
+@keyframes fadeup{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.menu{display:none}
+
+/* ---------- PRONTA CONSEGNA: una cornice, tre barche ---------- */
+.showcase{position:relative;height:240vh}
+.stage{position:sticky;top:0;height:100svh;display:grid;grid-template-columns:1fr 30vw 1fr;grid-template-rows:auto auto auto;align-content:center;column-gap:clamp(24px,4vw,64px);padding:0 var(--m)}
+.stage h2{grid-column:1/-1;text-align:center;font-size:clamp(48px,6.4vw,104px);margin-bottom:28px}
+.frame{grid-column:2;grid-row:2;position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--surface)}
+.frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.08);transition:opacity .7s var(--ease),transform 1.2s var(--ease)}
+.frame img.on{opacity:1;transform:none}
+.picker{grid-column:1;grid-row:2;align-self:end;justify-self:end;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.picker button{font-family:var(--display);font-size:var(--step-head);line-height:1;background:none;border:0;padding:4px 0;color:var(--muted);cursor:pointer;transition:color .3s}
+.picker button[aria-pressed=true]{color:var(--accent)}
+.picker button:hover{color:var(--ink)}
+.cap{grid-column:3;grid-row:2;align-self:end;max-width:34ch}
+.cap .mod{display:none}
+.cap .mod.on{display:block;animation:fadeup .6s var(--ease) both}
+.cap h3{font-family:var(--display);font-size:var(--step-lead);line-height:1.15}
+.cap p{margin-top:12px}
+.cap .meta{color:var(--muted);font-size:var(--step-small);margin-top:8px}
+.cap .acts{display:flex;flex-direction:column;gap:12px;margin-top:24px;align-items:flex-start}
+.mk{position:absolute;left:0;width:1px;height:70svh;pointer-events:none}
+.mk[data-i="0"]{top:0}.mk[data-i="1"]{top:70svh}.mk[data-i="2"]{top:140svh}
+.no-js .showcase{height:auto}
+.no-js .stage{position:relative;height:auto;padding:120px var(--m)}
+
+/* ---------- USATO ---------- */
+.usato{background:var(--surface);padding:clamp(96px,11vw,160px) var(--m) clamp(96px,10vw,140px)}
+.usato-head{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;align-items:end;margin-bottom:72px}
+.usato-head h2{grid-column:1/6;font-size:var(--step-head)}
+.usato-head .lede{grid-column:1/6;margin-top:24px;max-width:44ch}
+.finder{grid-column:7/13;grid-row:1/3;display:grid;grid-template-columns:1fr 1.1fr;gap:24px;align-items:end}
+.finder label{display:block;font-size:var(--step-lead);font-family:var(--display)}
+.finder input[type=range]{width:100%;margin:16px 0 4px;accent-color:var(--accent);height:32px}
+.finder output{display:block;font-size:var(--step-body);font-weight:500}
+.finder .hint{color:var(--muted);font-size:var(--step-small);margin-top:6px;min-height:4.5em}
+.finder figure img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:opacity .3s}
+.finder figcaption{margin-top:10px;font-size:var(--step-small);color:var(--muted)}
+.lineup{width:100%;border-collapse:collapse;font-family:var(--display);font-size:clamp(20px,2.1vw,30px);line-height:1.5;font-variant-numeric:lining-nums tabular-nums}
+.lineup th,.lineup td{padding:0;text-align:left;font-weight:500;vertical-align:baseline}
+.lineup col.c1{width:46%}.lineup col.c2{width:14%}.lineup col.c3{width:18%}
+.lineup td:last-child{text-align:right;font-style:italic;color:var(--muted)}
+.lineup tbody th[scope=rowgroup]{color:var(--accent);padding:72px 0 16px}
+.lineup tbody:first-of-type th[scope=rowgroup]{padding-top:0}
+.lineup tr.boat{transition:color .3s}
+.lineup tr.boat td{color:var(--muted)}
+.lineup tr.boat.match th,.lineup tr.boat.match td:not(:last-child){color:var(--accent)}
+.lineup .price{color:var(--ink)}
+
+/* ---------- GALLERIA ---------- */
+.gallery{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;padding:clamp(120px,14vw,200px) var(--m) 0}
+.gallery h2{grid-column:1/8;font-size:var(--step-head);margin-bottom:64px}
+.gallery figure{margin:0}
+.gallery figcaption{margin-top:10px;font-size:var(--step-small);color:var(--muted)}
+.gallery img{width:100%;object-fit:cover}
+.g1{grid-column:1/5}.g1 img{aspect-ratio:3/4}
+.g2{grid-column:7/13;margin-top:30vh}.g2 img{aspect-ratio:5/4}
+.g3{grid-column:6/12;margin-top:-6vh}.g3 img{aspect-ratio:3/2}
+.g4{grid-column:2/5;margin-top:-10vh}.g4 img{aspect-ratio:4/5}
+.g5{grid-column:9/13;margin-top:16vh}.g5 img{aspect-ratio:3/4}
+.g6{grid-column:1/7;margin-top:-34vh}.g6 img{aspect-ratio:5/4}
+
+/* ---------- RICAMBI ---------- */
+.service{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;padding:clamp(140px,18vh,220px) var(--m) 0}
+.service h2{grid-column:1/-1;font-size:var(--step-head);margin-bottom:72px}
+.service .grp{font-size:var(--step-body);line-height:1.35}
+.service .grp h3{font-weight:500;margin-bottom:1.35em;color:var(--ink)}
+.service .grp li{color:var(--muted);padding:3px 0;cursor:default;transition:color .2s}
+.service .grp li:hover,.service .grp li:focus{color:var(--ink);outline:none}
+.service .g-a{grid-column:1/4}.service .g-b{grid-column:4/7}.service .g-c{grid-column:7/10}
+.service .desc{grid-column:10/13;grid-row:2;color:var(--ink);font-family:var(--display);font-size:var(--step-lead);line-height:1.3;min-height:6em}
+.service .desc span{display:block;font-family:var(--text);font-size:var(--step-small);color:var(--muted);margin-top:12px}
+.req{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);margin-top:clamp(96px,10vw,140px)}
+.req .who img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.req .who p{margin-top:24px;max-width:46ch}
+.req .who figcaption{margin-top:10px;font-size:var(--step-small);color:var(--muted)}
+.req form{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-content:start}
+.req form h3{grid-column:1/-1;font-family:var(--display);font-size:var(--step-lead);margin-bottom:8px}
+.req label{display:grid;gap:6px;font-size:var(--step-small);color:var(--ink)}
+.req .wide{grid-column:1/-1}
+.req input,.req textarea{font:inherit;font-size:17px;color:var(--ink);background:var(--surface-2);border:0;padding:12px 14px;width:100%}
+.req input::placeholder{color:var(--muted)}
+.req textarea{min-height:96px;resize:vertical}
+.req .check{display:flex;gap:12px;align-items:flex-start}
+.req .check input{width:20px;height:20px;margin-top:3px;flex:none;accent-color:var(--accent)}
+.req .btn{grid-column:1/-1;margin-top:8px}
+
+/* ---------- CHI SIAMO ---------- */
+.about{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;padding:clamp(140px,18vh,220px) var(--m) 0}
+.about .pin{grid-column:1/7;grid-row:1/span 5}
+.about .pin>div{position:sticky;top:0;height:100svh;display:flex;flex-direction:column;justify-content:center}
+.about h2{font-size:clamp(88px,11vw,170px);line-height:.85}
+.about .pin p{margin-top:32px;max-width:40ch;color:var(--muted)}
+.person{grid-column:8/11;margin-bottom:22vh}
+.person:nth-of-type(even){grid-column:9/13}
+.person img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.person h3{margin-top:16px;font-size:18px;font-weight:500}
+.person .role{font-size:14px;color:var(--muted)}
+.person p{margin-top:10px;max-width:300px}
+.family{grid-column:7/13;margin-bottom:20vh}
+.family img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.family h3{margin-top:16px;font-size:18px;font-weight:500}
+.family p{margin-top:10px;max-width:46ch}
+
+/* ---------- CONTATTI ---------- */
+.contact{position:relative;min-height:100svh;background:var(--inv-bg);color:var(--inv-ink);padding:40px var(--m) 32px;display:grid;grid-template-rows:auto 1fr auto auto}
+.contact .top{display:flex;justify-content:space-between;align-items:flex-start;gap:32px}
+.contact h2{font-family:var(--text);font-size:clamp(20px,1.6vw,22px);font-weight:400;max-width:28ch;line-height:1.4}
+.contact .logo{width:150px}
+.contact .mail{align-self:end;margin-bottom:10vh;font-family:var(--display);font-size:clamp(34px,6.6vw,104px);line-height:1;letter-spacing:-0.03em;color:var(--inv-ink);text-decoration:none;transition:color .25s}
+.contact .mail:hover{color:#b07c06}
+.contact .mail br.ph{display:none}
+.contact .bottom{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;font-size:14px;color:var(--inv-muted)}
+.contact .bottom a{color:var(--inv-ink)}
+.contact .bottom ul{display:flex;gap:20px}
+.contact .bottom p span{display:inline-block;margin-right:20px}
+
+/* ---------- FOOTER ---------- */
+footer{display:grid;grid-template-columns:1fr auto 1fr;align-items:baseline;gap:24px;padding:22svh var(--m) 30px;font-size:15px;color:var(--muted)}
+footer nav{display:flex;gap:24px}
+footer a{color:var(--ink);text-decoration:none}
+footer a:hover{color:var(--accent)}
+footer .r{text-align:right}
+
+/* ---------- entrate ---------- */
+.js .rv{opacity:0;transform:translateY(24px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--i,0)*80ms)}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  .js .rv{opacity:1;transform:none;transition:none}
+  .hero h1 .ln>span,.hero-copy,.hero-img img,.cap .mod.on{animation:none}
+  .frame img{transition:none}
+}
+
+/* ---------- tablet ---------- */
+@media (max-width:1100px){
+  .stage{grid-template-columns:1fr 38vw 1fr}
+  .finder{grid-column:1/-1;grid-row:auto;margin-top:48px}
+  .usato-head h2,.usato-head .lede{grid-column:1/-1}
+  .service .g-a{grid-column:1/5}.service .g-b{grid-column:5/9}.service .g-c{grid-column:9/13}
+  .service .desc{grid-column:1/-1;grid-row:auto;margin-top:40px;min-height:0}
+  .req{grid-template-columns:1fr}
+  .person{grid-column:8/13}.person:nth-of-type(even){grid-column:8/13}
+}
+/* ---------- telefono ---------- */
+@media (max-width:700px){
+  .hero{min-height:600px}
+  .hero nav ul{display:none}
+  .menu{display:block;color:var(--ink);text-decoration:none;font-size:15px;padding:6px 0}
+  .hero nav{top:20px}
+  .hero-img img{object-position:40% 50%;filter:brightness(.5) contrast(1.08) saturate(.85)}
+  .hero h1{font-size:19vw}
+  .hero h1 .l1{left:16px;top:72px}
+  .hero h1 .l2{right:16px;bottom:16px}
+  .hero-copy{left:16px;right:16px;top:44%;animation:none}
+  .js .about .rv{opacity:1;transform:none}
+  .hero-copy p{font-size:17px}
+
+  .showcase{height:auto}
+  .stage{position:relative;height:auto;grid-template-columns:1fr;padding:120px 16px 40px;row-gap:0}
+  .stage h2{font-size:13vw}
+  .frame{grid-column:1;grid-row:3;width:70vw;justify-self:center}
+  .picker{grid-column:1;grid-row:2;flex-direction:row;justify-self:center;gap:28px;margin-bottom:24px}
+  .picker button{font-size:28px}
+  .cap{grid-column:1;grid-row:4;justify-self:center;text-align:left;margin-top:28px;max-width:none;width:70vw}
+  .mk{display:none}
+
+  .usato{padding:96px 16px}
+  .finder{grid-template-columns:1fr}
+  .lineup,.lineup tbody,.lineup tr,.lineup th,.lineup td{display:block}
+  .lineup colgroup,.lineup thead{display:none}
+  .lineup tr.boat{display:grid;grid-template-columns:auto auto 1fr;column-gap:16px;padding:9px 0}
+  .lineup tr.boat th{grid-column:1/-1;font-size:22px;line-height:1.25}
+  .lineup tr.boat td{font-family:var(--text);font-size:15px;line-height:1.6}
+  .lineup tr.boat td:last-child{text-align:right;font-family:var(--display)}
+  .lineup tbody th[scope=rowgroup]{font-size:24px;padding:48px 0 8px;position:sticky;top:0;background:var(--surface)}
+
+  .gallery{display:block;padding:120px 16px 0}
+  .gallery figure{margin:0 0 64px}
+  .g1{width:70%}.g2{width:84%;margin-left:auto !important}.g3{width:56%}.g4{width:calc(100% + 32px);margin-left:-16px !important}
+  .g5{width:70%;margin-left:auto !important}.g6{width:84%}
+  .g4 figcaption{padding-left:16px}
+
+  .service{display:block;padding:120px 16px 0}
+  .service h2{margin-bottom:48px}
+  .service .grp{margin-bottom:40px;font-size:18px;line-height:1.45}
+  .service .grp li{color:var(--ink)}
+  .service .grp .sum{color:var(--muted);margin-top:12px;display:block}
+  .service .desc{display:none}
+  .req form{grid-template-columns:1fr}
+
+  .about{display:block;padding:120px 16px 0}
+  .about .pin>div{position:static;height:auto;padding:0 0 48px}
+  .about h2{font-size:17vw}
+  .person,.person:nth-of-type(even),.family{width:72%;margin:0 0 48px}
+  .person:nth-of-type(even){margin-left:auto}
+  .family{width:100%}
+
+  .contact{min-height:86svh;padding:24px 16px}
+  .contact .logo{width:110px}
+  .contact .mail{font-size:10.4vw;margin-bottom:6vh}
+  .contact .mail br.ph{display:inline}
+  .contact .bottom{flex-direction:column;gap:12px;font-size:15px}
+  footer{grid-template-columns:1fr;gap:8px;padding:20svh 16px 24px;font-size:14px}
+  footer .r{text-align:left}
+}
+.sum{display:none}
+</style>
+</head>
+<body class="no-js">
+
+<header class="hero" id="top">
+  <figure class="hero-img">
+    <img src="img/g-hero.jpg" width="1364" height="897" alt="Una Bavaria C42 di bolina con lo spinnaker blu, il mare increspato e la costa all'orizzonte" fetchpriority="high">
+  </figure>
+  <nav aria-label="Principale">
+    <ul>
+      <li><a href="#nuove">Nuove</a></li>
+      <li><a href="#usato">Usato</a></li>
+      <li><a href="#ricambi">Ricambi</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+    <a class="menu" href="#fine">Menu</a>
+  </nav>
+  <h1 class="disp" aria-label="Gold Sail Ravenna"><span class="ln l1" aria-hidden="true"><span>Gold</span></span><span class="ln l2" aria-hidden="true"><span><i>Sail</i></span></span></h1>
+  <div class="hero-copy">
+    <p><strong>Gold Sail Ravenna, importatori Bavaria Yachts dal 2003.</strong> Barche a vela nuove in pronta consegna, usato scelto e preparato da noi, ricambi e assistenza nel porto di Marina di Ravenna.</p>
+    <a class="btn" href="#nuove">Vedi le barche in consegna</a>
+  </div>
+</header>
+
+<main>
+  <section class="showcase" id="nuove" aria-labelledby="nuove-h">
+    <div class="mk" data-i="0"></div><div class="mk" data-i="1"></div><div class="mk" data-i="2"></div>
+    <div class="stage">
+      <h2 id="nuove-h" class="disp">Pronta consegna</h2>
+      <div class="picker" role="group" aria-label="Scegli il modello">
+        <button type="button" data-m="0" aria-pressed="true">C38</button>
+        <button type="button" data-m="1" aria-pressed="false">C42</button>
+        <button type="button" data-m="2" aria-pressed="false">C46</button>
+      </div>
+      <div class="frame">
+        <img class="on" src="img/m-c38.jpg" width="448" height="561" alt="Bavaria C38 di bolina, con randa e fiocco bianchi">
+        <img src="img/m-c42.jpg" width="897" height="1122" alt="Bavaria C42 in navigazione lungo una costa rocciosa" loading="lazy">
+        <img src="img/m-c46.jpg" width="320" height="400" alt="Bavaria C46 in navigazione davanti a Venezia" loading="lazy">
+      </div>
+      <div class="cap">
+        <article class="mod on">
+          <h3>Bavaria C38</h3>
+          <p>La più compatta della C Line, con la carena larga e gli interni luminosi delle sorelle maggiori. Si porta bene anche in due.</p>
+          <p class="meta">38 piedi · circa 11,6 metri</p>
+          <div class="acts"><a class="btn ask" href="mailto:info@goldsailravenna.com?subject=Info%20e%20prezzi%20Bavaria%20C38">Chiedi prezzo e consegna</a><a class="lnk" href="tel:+390544530081">Oppure chiamate 0544 530081</a></div>
+        </article>
+        <article class="mod">
+          <h3>Bavaria C42</h3>
+          <p>Il centro della gamma: pozzetto ampio, plancetta di poppa che si apre sul mare, spazio sottocoperta per una famiglia.</p>
+          <p class="meta">42 piedi · circa 12,8 metri</p>
+          <div class="acts"><a class="btn ask" href="mailto:info@goldsailravenna.com?subject=Info%20e%20prezzi%20Bavaria%20C42">Chiedi prezzo e consegna</a><a class="lnk" href="tel:+390544530081">Oppure chiamate 0544 530081</a></div>
+        </article>
+        <article class="mod">
+          <h3>Bavaria C46</h3>
+          <p>La più grande che teniamo pronta: 13,95 metri di scafo e 4,70 di baglio, per le crociere lunghe in Adriatico e oltre.</p>
+          <p class="meta">46 piedi · circa 14 metri</p>
+          <div class="acts"><a class="btn ask" href="mailto:info@goldsailravenna.com?subject=Info%20e%20prezzi%20Bavaria%20C46">Chiedi prezzo e consegna</a><a class="lnk" href="tel:+390544530081">Oppure chiamate 0544 530081</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="usato" id="usato" aria-labelledby="usato-h">
+    <div class="usato-head">
+      <h2 id="usato-h" class="disp rv">Usato scelto</h2>
+      <p class="lede rv" style="--i:1">Diciotto barche selezionate e preparate da noi, vela e motore. Schede tecniche e quotazioni aggiornate: chiedeteci quella che vi interessa.</p>
+      <div class="finder rv" style="--i:2">
+        <div>
+          <label for="len">Che misura cercate?</label>
+          <input id="len" type="range" min="7" max="17" step="0.1" value="12" aria-describedby="hint">
+          <output id="len-out" for="len">12,0 metri · 39 piedi</output>
+          <p class="hint" id="hint">Le barche entro mezzo metro si accendono in oro nell'elenco.</p>
+        </div>
+        <figure>
+          <img id="near-img" src="img/u-b38.jpg" width="1000" height="750" alt="Bavaria 38 Cruiser usata, ormeggiata in banchina" loading="lazy">
+          <figcaption id="near-cap">La più vicina: Bavaria 38 Cruiser del 2004, 12,13 metri.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <table class="lineup" id="lineup">
+      <caption class="vh">Barche usate in vendita, per lunghezza</caption>
+      <colgroup><col class="c1"><col class="c2"><col class="c3"><col></colgroup>
+      <thead class="vh"><tr><th scope="col">Barca</th><th scope="col">Anno</th><th scope="col">Lunghezza</th><th scope="col">Stato</th></tr></thead>
+      <tbody>
+        <tr><th scope="rowgroup" colspan="4">Fino a 11 metri</th></tr>
+        <tr class="boat" data-len="9.76" data-img="u-b31"><th scope="row">Bavaria 31 Cruiser</th><td>2008</td><td>9,76 m</td><td>in trattativa</td></tr>
+        <tr class="boat" data-len="10.77" data-img="u-oc341"><th scope="row">Beneteau Oceanis 34.1</th><td>2024</td><td>10,77 m</td><td></td></tr>
+        <tr class="boat" data-len="11.00" data-img="u-dehler36"><th scope="row">Dehler 36 CWS</th><td>1989</td><td>11,00 m</td><td></td></tr>
+      </tbody>
+      <tbody>
+        <tr><th scope="rowgroup" colspan="4">Da 11 a 12,5 metri</th></tr>
+        <tr class="boat" data-len="11.30" data-img="u-b37"><th scope="row">Bavaria 37 Cruiser</th><td>2017</td><td>11,30 m</td><td></td></tr>
+        <tr class="boat" data-len="11.80" data-img=""><th scope="row">Beneteau Oceanis 38.1</th><td>2019</td><td>11,80 m</td><td></td></tr>
+        <tr class="boat" data-len="11.98" data-img="u-queentime44"><th scope="row">Queentime 44 CC</th><td>2000</td><td>11,98 m</td><td></td></tr>
+        <tr class="boat" data-len="12.13" data-img="u-b38"><th scope="row">Bavaria 38 Cruiser</th><td>2004</td><td>12,13 m</td><td></td></tr>
+        <tr class="boat" data-len="12.30" data-img="u-zuanelli"><th scope="row">Zuanelli 40 S&amp;S</th><td>2007</td><td>12,30 m</td><td></td></tr>
+        <tr class="boat" data-len="12.42" data-img="u-harmony42"><th scope="row">Harmony 42</th><td>2007</td><td>12,42 m</td><td></td></tr>
+        <tr class="boat" data-len="12.45" data-img="u-gibsea41"><th scope="row">Gib Sea 41</th><td>2003</td><td>12,45 m</td><td>in trattativa</td></tr>
+      </tbody>
+      <tbody>
+        <tr><th scope="rowgroup" colspan="4">Da 12,5 a 14 metri</th></tr>
+        <tr class="boat" data-len="13.60" data-img="u-b46"><th scope="row">Bavaria 46 Cruiser</th><td>2019</td><td>13,60 m</td><td></td></tr>
+        <tr class="boat" data-len="13.70" data-img="u-vision44"><th scope="row">Bavaria 44 Vision</th><td>2007</td><td>13,70 m</td><td></td></tr>
+        <tr class="boat" data-len="13.94" data-img="u-gs45"><th scope="row">Grand Soleil 45</th><td>1993</td><td>13,94 m</td><td></td></tr>
+      </tbody>
+      <tbody>
+        <tr><th scope="rowgroup" colspan="4">Oltre 14 metri</th></tr>
+        <tr class="boat" data-len="14.43" data-img="u-so479"><th scope="row">Jeanneau Sun Odyssey 479</th><td>2017</td><td>14,43 m</td><td>in trattativa</td></tr>
+        <tr class="boat" data-len="15.27" data-img="u-sense50"><th scope="row">Beneteau Sense 50</th><td>2012</td><td>15,27 m</td><td></td></tr>
+        <tr class="boat" data-len="15.99" data-img="u-c50"><th scope="row">Bavaria C50 Style</th><td>2024</td><td>15,99 m</td><td>in trattativa</td></tr>
+        <tr class="boat" data-len="16.20" data-img="u-gieffe53"><th scope="row">Gieffe 53</th><td>2004</td><td>16,20 m</td><td></td></tr>
+      </tbody>
+      <tbody>
+        <tr><th scope="rowgroup" colspan="4">Motore</th></tr>
+        <tr class="boat" data-len="7.26" data-img="u-seadoo"><th scope="row">Sea-Doo Challenger 230 Wake</th><td>2008</td><td>7,26 m</td><td></td></tr>
+      </tbody>
+      <tbody>
+        <tr><th scope="rowgroup" colspan="4">Vele nuove in magazzino</th></tr>
+        <tr class="boat"><th scope="row">Set Elvstrom per Bavaria C42</th><td></td><td class="price">3.100 €</td><td>IVA esclusa</td></tr>
+        <tr class="boat"><th scope="row">Set Elvstrom per Bavaria C45</th><td></td><td class="price">3.500 €</td><td>IVA esclusa</td></tr>
+        <tr class="boat"><th scope="row">Set Elvstrom per Bavaria C46</th><td></td><td class="price">3.900 €</td><td>IVA esclusa</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="gallery" aria-labelledby="bordo-h">
+    <h2 id="bordo-h" class="disp rv">A bordo</h2>
+    <figure class="rv g1"><div><img class="photo" src="img/g-plancetta.jpg" width="512" height="683" alt="Due persone sedute sulla plancetta di poppa in teak, sopra il mare blu" loading="lazy"></div><figcaption>La plancetta di poppa, aperta sul mare.</figcaption></figure>
+    <figure class="rv g2"><div><img class="photo" src="img/g-aereo.jpg" width="1470" height="1176" alt="Una Bavaria vista dall'alto: pozzetto in teak, timoniere e ospiti, mare blu scuro" loading="lazy"></div><figcaption>Il pozzetto visto dall'albero.</figcaption></figure>
+    <figure class="rv g3"><div><img class="photo" src="img/g-gennaker.jpg" width="841" height="561" alt="Una Bavaria con gennaker bianco e randa scura, mare mosso" loading="lazy"></div><figcaption>Gennaker e mare formato.</figcaption></figure>
+    <figure class="rv g4"><div><img class="photo" src="img/g-dinette.jpg" width="897" height="1122" alt="Dinette e cucina in legno chiaro sottocoperta di una Bavaria C42" loading="lazy"></div><figcaption>Sottocoperta di una C42.</figcaption></figure>
+    <figure class="rv g5"><div><img class="photo" src="img/g-cucina.jpg" width="673" height="898" alt="La cucina e il quadrato sottocoperta di una Bavaria C38" loading="lazy"></div><figcaption>La cucina di una C38.</figcaption></figure>
+    <figure class="rv g6"><div><img class="photo" src="img/g-poppa.jpg" width="897" height="718" alt="Una Bavaria C42 di bolina vista di tre quarti, equipaggio in pozzetto" loading="lazy"></div><figcaption>Una C42 di bolina.</figcaption></figure>
+  </section>
+
+  <section class="service" id="ricambi" aria-labelledby="ric-h">
+    <h2 id="ric-h" class="disp rv">Ricambi e assistenza</h2>
+    <div class="grp g-a rv">
+      <h3>Vendita</h3>
+      <ul>
+        <li tabindex="0" data-d="Tutta la gamma a vela del cantiere tedesco, con le versioni e gli allestimenti disponibili per la stagione.">Bavaria C Line</li>
+        <li tabindex="0" data-d="La linea da crociera classica, dal 34 al 46 piedi.">Bavaria Cruiser Line</li>
+        <li tabindex="0" data-d="Le barche già in acqua o in arrivo a Marinara, consegnabili in poche settimane.">Pronta consegna</li>
+        <li tabindex="0" data-d="Barche a vela selezionate, controllate e preparate prima della vendita.">Usato vela</li>
+        <li tabindex="0" data-d="Un'offerta più piccola, scelta con lo stesso criterio.">Usato motore</li>
+        <li tabindex="0" data-d="Giorgio valuta la vostra barca, anche come permuta.">Valutazione del vostro usato</li>
+      </ul>
+      <span class="sum">Nuovo Bavaria, usato scelto e permute.</span>
+    </div>
+    <div class="grp g-b rv" style="--i:1">
+      <h3>Assistenza</h3>
+      <ul>
+        <li tabindex="0" data-d="Ordiniamo direttamente dal cantiere i ricambi originali della vostra barca.">Ricambi originali Bavaria</li>
+        <li tabindex="0" data-d="Con il numero di scafo troviamo il pezzo giusto al primo colpo.">Ricerca per matricola HIN o CIN</li>
+        <li tabindex="0" data-d="Interventi in banchina nel porto di Marina di Ravenna.">Assistenza in porto a Marinara</li>
+        <li tabindex="0" data-d="Una foto del guasto spesso basta per capire cosa serve.">Foto e allegati del guasto</li>
+        <li tabindex="0" data-d="Rotte, porti e preparazione: chiedete pure, ci piace parlarne.">Consigli per la crociera</li>
+      </ul>
+      <span class="sum">Ricambi originali e interventi in banchina.</span>
+    </div>
+    <div class="grp g-c rv" style="--i:2">
+      <h3>In magazzino</h3>
+      <ul>
+        <li tabindex="0" data-d="Vele in Dacron del velaio danese, tagliate sui piani velici Bavaria.">Vele Elvstrom in Dacron</li>
+        <li tabindex="0" data-d="Randa avvolgibile nell'albero, per ridurre in pochi secondi.">Randa avvolgibile</li>
+        <li tabindex="0" data-d="Fiocco autovirante: si vira senza toccare le scotte.">Fiocco autovirante</li>
+        <li tabindex="0" data-d="Set pronti per C42 (3.100 €), C45 (3.500 €) e C46 (3.900 €), IVA esclusa.">Set per C42, C45 e C46</li>
+        <li tabindex="0" data-d="Il magazzino si aggiorna ogni mese: chiedete a Elena.">Accessori in arrivo ogni mese</li>
+      </ul>
+      <span class="sum">Vele e accessori pronti a Marinara.</span>
+    </div>
+    <p class="desc" id="desc" aria-live="polite">Passate su una voce per leggerne il dettaglio.<span>Vendita, assistenza e magazzino sono nella stessa sede, in Via Marinara 77.</span></p>
+
+    <div class="req">
+      <figure class="who rv">
+        <img class="photo" src="img/w-cruiser37.jpg" width="1024" height="683" alt="Una coppia sale a bordo di una Bavaria Cruiser dal pontile" loading="lazy">
+        <figcaption>La consegna in banchina a Marinara.</figcaption>
+        <p>Per un ricambio bastano modello, anno e matricola dello scafo: Elena Veronesi controlla la disponibilità e vi richiama. Le vele per C42, C45 e C46 sono già in magazzino.</p>
+      </figure>
+      <form class="rv" style="--i:1" action="mailto:e.veronesi@goldsail.it" method="post" enctype="text/plain">
+        <h3>Richiesta ricambi</h3>
+        <label class="wide">Nome e cognome<input name="nome" autocomplete="name" required></label>
+        <label>Email<input name="email" type="email" autocomplete="email" required></label>
+        <label>Telefono<input name="telefono" type="tel" autocomplete="tel"></label>
+        <label>Barca e modello<input name="modello" placeholder="Bavaria C42"></label>
+        <label>Anno<input name="anno" inputmode="numeric"></label>
+        <label class="wide">Matricola HIN o CIN<input name="hin" aria-describedby="hin-d"></label>
+        <p class="vh" id="hin-d">La trovate incisa sullo specchio di poppa, a dritta.</p>
+        <label class="wide">Di cosa avete bisogno<textarea name="note"></textarea></label>
+        <label class="check wide"><input type="checkbox" name="privacy" required><span>Ho letto l'<a href="https://www.goldsailravenna.com/informativa-sulla-privacy.html">informativa privacy</a> e autorizzo Gold Sail a ricontattarmi.</span></label>
+        <button class="btn" type="submit">Invia a Elena</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="about" id="storia" aria-labelledby="storia-h">
+    <div class="pin"><div>
+      <h2 id="storia-h" class="disp">Chi siamo</h2>
+      <p>Una famiglia di regatanti: dal 470 olimpico al mestiere di vendere barche, e dal 2003 Bavaria in tutto il Nord Est e l'Adriatico.</p>
+    </div></div>
+    <article class="person rv">
+      <img src="img/p-giorgio.jpg" width="283" height="353" alt="Giorgio Capra in banchina" loading="lazy">
+      <h3>Giorgio Capra</h3>
+      <p class="role">Fondatore, vendite</p>
+      <p>Una vita sui campi di regata con il 470, poi vent'anni con il Cantiere del Pardo e X-Yachts: un occhio allenato a valutare quasi ogni barca in circolazione.</p>
+    </article>
+    <article class="person rv">
+      <img src="img/p-michele.jpg" width="283" height="353" alt="Michele Capra in banchina, con la polo Bavaria" loading="lazy">
+      <h3>Michele Capra</h3>
+      <p class="role">Direzione</p>
+      <p>Salito su un Optimist a cinque anni e mai più sceso. Regatante, segue la vendita del nuovo e dell'usato. Il suo numero è il 347 402 2602.</p>
+    </article>
+    <article class="person rv">
+      <img src="img/p-elena.jpg" width="283" height="353" alt="Elena Veronesi in banchina, con una bandiera Bavaria alle spalle" loading="lazy">
+      <h3>Elena Veronesi</h3>
+      <p class="role">Amministrazione e ricambi</p>
+      <p>Trova il pezzo giusto dalla matricola dello scafo e tiene il magazzino di Marinara. Scrivetele a e.veronesi@goldsail.it.</p>
+    </article>
+    <article class="family rv">
+      <img class="photo" src="img/w-capra.jpg" width="1296" height="868" alt="Giorgio Capra in barca a vela con la moglie e il figlio Michele, in una foto d'epoca" loading="lazy">
+      <h3>La famiglia Capra, a vela</h3>
+      <p>La sede nel porto di Marinara è anche officina, magazzino e punto d'incontro di chi torna da una crociera o da una regata.</p>
+    </article>
+  </section>
+
+  <section class="contact" id="contatti" aria-labelledby="cont-h">
+    <div class="top">
+      <h2 id="cont-h">Per una barca nuova, un usato o un ricambio, scriveteci.</h2>
+      <img class="logo" src="img/logo.png" width="580" height="410" alt="Gold Sail Ravenna" loading="lazy">
+    </div>
+    <span></span>
+    <a class="mail" href="mailto:info@goldsailravenna.com?subject=Richiesta%20dal%20sito">info@<br class="ph">goldsailravenna.com</a>
+    <div class="bottom">
+      <p><span><a href="https://maps.google.com/?q=Via+Marinara+77,+48122+Marina+di+Ravenna">Via Marinara 77, Marina di Ravenna</a></span><span>Ufficio <a href="tel:+390544530081">0544 530081</a></span><span>Michele <a href="tel:+393474022602">347 402 2602</a></span></p>
+      <ul>
+        <li><a href="https://www.facebook.com/goldsail.ravenna.7">Facebook</a></li>
+        <li><a href="https://www.instagram.com/gold_sail_ravenna/">Instagram</a></li>
+        <li><a href="https://www.youtube.com/channel/UCupH6kz-bESfzOhCx4VjMrQ">YouTube</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer id="fine">
+  <p>Gold Sail Ravenna, Bavaria Yachts</p>
+  <nav aria-label="Pagina"><a href="#nuove">Nuove</a><a href="#usato">Usato</a><a href="#ricambi">Ricambi</a><a href="#contatti">Contatti</a></nav>
+  <p class="r">© 2026 Gold Sail Ravenna S.r.l.s. · P. IVA 02494170398 · <a href="https://www.goldsailravenna.com/informativa-sulla-privacy.html">Privacy</a></p>
+</footer>
+
+<script>
+(function(){
+  var B=document.body; B.classList.remove('no-js'); B.classList.add('js');
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* entrate */
+  var els=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -10% 0px'});
+    els.forEach(function(el){io.observe(el)});
+  } else els.forEach(function(el){el.classList.add('in')});
+
+  /* pronta consegna: tre barche nella stessa cornice */
+  var imgs=[].slice.call(document.querySelectorAll('.frame img'));
+  var mods=[].slice.call(document.querySelectorAll('.cap .mod'));
+  var btns=[].slice.call(document.querySelectorAll('.picker button'));
+  var cur=0;
+  function show(i){
+    if(i===cur) return; cur=i;
+    imgs.forEach(function(im,k){im.classList.toggle('on',k===i)});
+    mods.forEach(function(m,k){m.classList.toggle('on',k===i)});
+    btns.forEach(function(b,k){b.setAttribute('aria-pressed',k===i)});
+  }
+  var marks=[].slice.call(document.querySelectorAll('.mk'));
+  var phone=matchMedia('(max-width:700px)');
+  if('IntersectionObserver' in window){
+    var mo=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting&&!phone.matches) show(+e.target.dataset.i)})},{rootMargin:'-50% 0px -50% 0px'});
+    marks.forEach(function(m){mo.observe(m)});
+  }
+  btns.forEach(function(b){b.addEventListener('click',function(){
+    var i=+b.dataset.m; show(i);
+    if(!phone.matches){var sc=document.getElementById('nuove'); window.scrollTo({top:sc.offsetTop+i*innerHeight*0.7+2,behavior:reduce?'auto':'smooth'});}
+  })});
+
+  /* ricambi: descrizione al passaggio */
+  var desc=document.getElementById('desc'), def=desc.innerHTML;
+  document.querySelectorAll('.service li[data-d]').forEach(function(li){
+    var on=function(){desc.textContent=li.dataset.d};
+    li.addEventListener('mouseenter',on); li.addEventListener('focus',on);
+    li.addEventListener('mouseleave',function(){desc.innerHTML=def});
+  });
+
+  /* usato: che misura cercate? */
+  var range=document.getElementById('len'), out=document.getElementById('len-out'), hint=document.getElementById('hint');
+  var img=document.getElementById('near-img'), cap=document.getElementById('near-cap');
+  var rows=[].slice.call(document.querySelectorAll('#lineup tr[data-len]'));
+  var newM=[['C38',11.58],['C42',12.80],['C46',14.02]];
+  function update(){
+    var v=parseFloat(range.value), ft=Math.round(v/0.3048), near=null, best=99, hits=0;
+    out.textContent=v.toFixed(1).replace('.',',')+' metri · '+ft+' piedi';
+    rows.forEach(function(r){
+      var d=Math.abs(parseFloat(r.dataset.len)-v), m=d<=0.5;
+      r.classList.toggle('match',m); if(m) hits++;
+      if(d<best && r.dataset.img){best=d;near=r}
+    });
+    var nm=newM.filter(function(n){return Math.abs(n[1]-v)<=0.6}).map(function(n){return n[0]});
+    hint.textContent=(hits?hits+(hits>1?' barche usate':' barca usata')+' entro mezzo metro, in oro nell’elenco.':'Nessuna usata entro mezzo metro: provate una misura vicina.')+(nm.length?' Tra le nuove: la '+nm.join(' e la ')+'.':'');
+    if(near){
+      var name=near.querySelector('th').textContent, c=near.querySelectorAll('td');
+      img.src='img/'+near.dataset.img+'.jpg'; img.alt=name+' usata, in banchina';
+      cap.textContent='La più vicina: '+name+' del '+c[0].textContent+', '+c[1].textContent.replace(' m',' metri')+'.';
+    }
+  }
+  range.addEventListener('input',update); update();
+})();
+</script>
+</body>
+</html>
