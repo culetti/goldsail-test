@@ -63,9 +63,15 @@ ul,ol{margin:0;padding:0;list-style:none}
 .hero-top nav ul{display:flex;gap:28px}
 .hero-top nav a{text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:6px;font-weight:500;padding:6px 0;transition:text-decoration-color .2s var(--ease)}
 .hero-top nav a:hover{text-decoration-color:var(--accent)}
-.hero-mid{position:relative;z-index:2;flex:1;display:grid;grid-template-columns:minmax(0,42%) 1fr;column-gap:clamp(24px,4vw,64px);padding:40px 0 0 var(--m);margin-bottom:calc(27.6vw + 40px);min-height:0}
-.hero-pic{margin:0;min-height:0;overflow:hidden}
-.hero-pic img{width:100%;height:100%;object-fit:cover;object-position:40% 55%;animation:drift 28s ease-in-out infinite alternate}
+.hero-mid{position:relative;z-index:2;flex:1;display:grid;grid-template-columns:minmax(0,42%) 1fr;grid-template-rows:minmax(0,1fr);column-gap:clamp(24px,4vw,64px);padding:40px 0 0 var(--m);margin-bottom:calc(27.6vw + 40px);min-height:0}
+.feature{display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:minmax(0,1fr);min-height:0;overflow:hidden;background:var(--ink);color:var(--bg)}
+.feature-pic{position:relative;overflow:hidden;min-height:0}
+.feature-pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% 55%;animation:drift 28s ease-in-out infinite alternate}
+.feature-text{padding:clamp(20px,2.4vw,36px);display:flex;flex-direction:column;justify-content:flex-end;gap:14px}
+.feature-text h2{font-size:clamp(1.75rem,2.6vw,2.75rem);line-height:.95}
+.feature-text p{max-width:30ch;color:var(--inverse-muted)}
+.feature-text a{color:var(--accent);font-weight:500;text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px;align-self:flex-start;transition:padding-left .2s var(--ease)}
+.feature-text a:hover{padding-left:8px}
 .hero-copy{align-self:center;padding:0 0 8px;max-width:calc(34ch + 4ch)}
 .hero-copy .lead{font-size:var(--step-lead);font-weight:500;line-height:1.25;max-width:22ch}
 .hero-copy p{margin-top:16px;max-width:42ch}
@@ -218,8 +224,8 @@ footer .bigname span{color:var(--accent)}
 
 /* schermi più quadrati (iPad in orizzontale): il nome cresce e il testo pure */
 @media (min-width:701px) and (max-aspect-ratio:1.55){
-  .monument{font-size:clamp(300px,40vw,760px)}
-  .hero-mid{margin-bottom:calc(31.6vw + 40px)}
+  .monument{font-size:clamp(300px,36vw,760px)}
+  .hero-mid{margin-bottom:calc(29vw + 40px)}
   .hero-copy .lead{font-size:clamp(1.25rem,2vw,1.75rem)}
   .hero-mid{padding-top:24px}
 }
@@ -227,6 +233,12 @@ footer .bigname span{color:var(--accent)}
 @media (min-width:701px) and (max-aspect-ratio:1){
   .monument{font-size:clamp(300px,35vw,760px)}
   .hero-mid{margin-bottom:calc(27.6vw + 40px)}
+  .hero{height:auto;min-height:0}
+  .hero-mid{flex:none;margin-bottom:0;padding-top:56px;align-items:start}
+  .hero-copy{align-self:start;padding-top:24px}
+  .feature{grid-template-columns:1fr;grid-template-rows:auto auto;overflow:visible}
+  .feature-pic{aspect-ratio:4/3}
+  .monument{position:relative;left:-3vw;bottom:auto;margin:96px 0 -0.07em}
 }
 /* ---------- tablet ---------- */
 @media (max-width:1000px){
@@ -247,10 +259,13 @@ footer .bigname span{color:var(--accent)}
   .hero-top nav ul{display:none}
   .hero-top nav .menu{display:inline-block}
   .hero{height:auto;min-height:100svh}
-  .hero-mid{grid-template-columns:1fr;padding:40px 0 0 20px;margin-bottom:0;row-gap:40px}
-  .hero-copy{max-width:none;padding-right:20px}
-  .hero-pic{aspect-ratio:4/3;margin-bottom:24px}
-  .monument{position:relative;left:-3vw;bottom:auto;margin:auto 0 -0.06em;font-size:52vw;line-height:.8}
+  .hero-mid{display:contents}
+  .hero-copy{order:1;max-width:none;padding:48px 20px 150px}
+  .monument{order:2}
+  .feature{order:3;grid-template-columns:1fr;grid-template-rows:auto auto;overflow:visible;margin:40px 0 0}
+  .feature-pic{aspect-ratio:4/3}
+  .feature-text{padding:20px}
+  .monument{position:relative;left:-3vw;bottom:auto;margin:auto 0 0;font-size:52vw;line-height:.8}
   .monument br.ph{display:inline}
   .showcase{grid-template-columns:1fr;min-height:0}
   .plate{padding:16px 16px 0}
@@ -308,9 +323,16 @@ footer .bigname span{color:var(--accent)}
       <p class="rv" style="--i:1">Importatori dal 2003: barche a vela nuove in pronta consegna, usato scelto e preparato da noi, ricambi originali e assistenza in Via Marinara 77.</p>
       <a class="btn rv" style="--i:2" href="#nuove">Vedi le barche in consegna</a>
     </div>
-    <figure class="hero-pic">
-      <img src="img/w-c42-ex-15.jpg" width="1706" height="1122" alt="Bavaria C42 a vela lungo una costa rocciosa, con l'equipaggio in pozzetto" fetchpriority="high">
-    </figure>
+    <aside class="feature rv" style="--i:3" aria-labelledby="feat-h">
+      <div class="feature-pic">
+        <img src="img/w-c42-ex-15.jpg" width="1706" height="1122" alt="Bavaria C42 a vela lungo una costa rocciosa, con l'equipaggio in pozzetto" fetchpriority="high">
+      </div>
+      <div class="feature-text">
+        <h2 id="feat-h" class="disp">Bavaria C42 in pronta consegna</h2>
+        <p>Dodici metri e ottanta, pozzetto aperto sul mare. In acqua a Marinara per la prossima stagione.</p>
+        <a href="#nuove" data-show="c42">Prezzo e data di consegna</a>
+      </div>
+    </aside>
   </div>
   <h1 class="monument disp" aria-label="Gold Sail Ravenna"><span aria-hidden="true">Gold<br class="ph"><b>s</b>ail</span></h1>
 </header>
@@ -601,6 +623,7 @@ footer .bigname span{color:var(--accent)}
     ask.href='mailto:info@goldsailravenna.com?subject='+encodeURIComponent('Info e prezzi Bavaria '+m.toUpperCase());
   }
   tabs.forEach(function(b){b.addEventListener('click',function(){show(b.dataset.t)})});
+  document.querySelectorAll('[data-show]').forEach(function(l){l.addEventListener('click',function(){show(l.dataset.show)})});
   show('c38');
 
   /* usato: che misura cerchi? */
