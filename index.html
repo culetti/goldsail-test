@@ -68,7 +68,9 @@ ul,ol{margin:0;padding:0;list-style:none}
 .hero-copy p{margin-top:16px;max-width:42ch}
 .hero-copy .btn{margin-top:32px}
 .monument{position:absolute;left:-5vw;bottom:-0.07em;margin:0;font-size:clamp(300px,35vw,760px);white-space:nowrap;color:var(--ink);line-height:.8;letter-spacing:-0.035em;transform-origin:50% 100%;pointer-events:none;user-select:none}
-.monument b{color:var(--accent);font-weight:inherit}
+.monument b{font-weight:inherit;color:var(--accent)}
+.monument b.pic{color:transparent;background:url(img/s-c42.jpg) 50% 50%/cover no-repeat;-webkit-background-clip:text;background-clip:text} /* taste-skill-ignore: la fotografia dentro la lettera è il dispositivo chiesto dalla direzione "name-as-monument" */
+@supports not (background-clip:text){.monument b.pic{color:var(--accent);background:none}} /* taste-skill-ignore: ripiego senza foto */
 .monument br.ph{display:none}
 @supports (animation-timeline:view()){
   .monument{animation:sink linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
@@ -140,10 +142,13 @@ ul,ol{margin:0;padding:0;list-style:none}
 .service h2{grid-column:1/-1;font-size:var(--step-head);margin-bottom:72px}
 .service .grp{font-size:var(--step-body);line-height:1.3}
 .service .grp h3{font-weight:500;margin-bottom:1.3em}
-.service .grp li{color:var(--muted);padding:2px 0;transition:color .15s}
-.service .grp li:hover{color:var(--ink)}
+.service .grp li{color:var(--ink);padding:2px 0}
 .service .g1{grid-column:1/4}.service .g2{grid-column:4/7}.service .g3{grid-column:7/10}
-.service form{grid-column:10/13;display:grid;gap:12px;align-content:start}
+.service form{grid-column:1/7;display:grid;grid-template-columns:1fr 1fr;gap:14px 16px;align-content:start;margin-top:96px}
+.service form h3,.service form .wide-f,.service form .btn{grid-column:1/-1}
+.service .dock{grid-column:7/13;margin:96px 0 0;position:relative}
+.service .dock img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.service .dock figcaption{position:absolute;left:0;bottom:0;padding:10px 16px;background:var(--ink);color:var(--bg);font-size:var(--step-small)}
 .service form h3{font-weight:500;margin-bottom:4px}
 .service label{font-size:var(--step-small);color:var(--ink);display:grid;gap:4px}
 .service input,.service textarea{font:inherit;padding:10px 12px;border:0;background:var(--surface);color:var(--ink);width:100%}
@@ -151,7 +156,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .service .check{display:flex;gap:10px;align-items:flex-start}
 .service .check input{width:20px;height:20px;margin-top:2px;flex:none;accent-color:var(--ink)}
 .service form .btn{margin-top:8px;width:100%}
-.service .note{grid-column:1/10;margin-top:56px;max-width:60ch}
+.service .note{grid-column:10/13;font-size:var(--step-body);line-height:1.4}
 
 /* ---------- ABOUT ---------- */
 .about{padding:var(--gap) var(--m) 0;display:grid;grid-template-columns:calc(34vw - var(--m)) 1fr;column-gap:0;row-gap:120px}
@@ -161,10 +166,11 @@ ul,ol{margin:0;padding:0;list-style:none}
 .facts dd{margin:0;font-weight:500}
 .about .para{font-size:var(--step-lead);line-height:1.4;max-width:50ch}
 .about .para p+p{margin-top:1em}
-.about figure{margin:0;padding-right:40px}
-.about figure img{width:100%;aspect-ratio:3/2;object-fit:cover}
+.about figure{margin:0;grid-column:1/-1}
+.about figure img{width:100%;aspect-ratio:21/10;object-fit:cover;object-position:50% 35%}
 .about figcaption{margin-top:10px;font-size:var(--step-small);color:var(--muted)}
-.records{display:grid;grid-template-columns:repeat(2,minmax(0,300px));gap:64px;align-content:start}
+.records{grid-column:1/-1;display:grid;grid-template-columns:calc(34vw - var(--m)) 1fr 1fr;column-gap:64px;align-content:start}
+.records>div{max-width:340px}
 .records h3{font-weight:500;font-size:var(--step-body);margin-bottom:14px}
 .records li{display:flex;justify-content:space-between;gap:16px;padding:5px 0;font-size:var(--step-body)}
 .records li span:last-child{color:var(--muted);text-align:right}
@@ -209,13 +215,13 @@ footer .bigname span{color:var(--accent)}
 /* ---------- tablet ---------- */
 @media (max-width:1000px){
   .service .g1{grid-column:1/5}.service .g2{grid-column:5/9}.service .g3{grid-column:9/13}
-  .service form{grid-column:1/-1;margin-top:56px;grid-template-columns:1fr 1fr}
-  .service form h3,.service form .wide-f,.service form .btn{grid-column:1/-1}
-  .service .note{grid-column:1/-1}
+  .service .note{grid-column:1/-1;margin-top:40px;max-width:60ch}
+  .service form{grid-column:1/-1;margin-top:64px}
+  .service .dock{grid-column:1/-1;margin-top:40px;aspect-ratio:3/2}
   .about{grid-template-columns:1fr;row-gap:56px}
   .about h2{grid-column:1;margin-bottom:0}
   .facts{grid-template-columns:repeat(3,1fr);max-width:none}
-  .about figure{padding-right:0}
+  .records{grid-template-columns:1fr 1fr 1fr;column-gap:40px}
 }
 /* ---------- telefono ---------- */
 @media (max-width:700px){
@@ -244,6 +250,7 @@ footer .bigname span{color:var(--accent)}
   .service h2{margin-bottom:48px}
   .service .grp{line-height:1.4;margin-bottom:40px}
   .service form{display:grid;grid-template-columns:1fr;margin-top:16px}
+  .service .dock{display:block;aspect-ratio:3/2;margin-top:32px}
   .about{padding-top:96px}
   .facts{grid-template-columns:1fr 1fr;font-size:14px}
   .records{grid-template-columns:1fr;gap:40px}
@@ -283,7 +290,7 @@ footer .bigname span{color:var(--accent)}
     <p class="rv" style="--i:1">Importatori dal 2003: barche a vela nuove in pronta consegna, usato scelto e preparato da noi, ricambi originali e assistenza in Via Marinara 77.</p>
     <a class="btn rv" style="--i:2" href="#nuove">Vedi le barche in consegna</a>
   </div>
-  <h1 class="monument disp"><span aria-hidden="true">Gold<br class="ph"><b>s</b>ail</span><span class="vh">Gold Sail Ravenna</span></h1>
+  <h1 class="monument disp"><span aria-hidden="true">Gold<br class="ph"><b class="pic">s</b>ail</span><span class="vh">Gold Sail Ravenna</span></h1>
 </header>
 
 <main>
@@ -447,6 +454,7 @@ footer .bigname span{color:var(--accent)}
         <li>Accessori in arrivo ogni mese</li>
       </ul>
     </div>
+    <p class="note rv" style="--i:3">Per un ricambio bastano modello, anno e matricola dello scafo: Elena Veronesi controlla la disponibilità e vi richiama. Le vele per C42, C45 e C46 sono già in magazzino.</p>
     <form id="ricambi-form" action="mailto:e.veronesi@goldsail.it" method="post" enctype="text/plain">
       <h3>Richiesta ricambi</h3>
       <label class="wide-f">Nome e cognome<input name="nome" autocomplete="name" required></label>
@@ -460,11 +468,14 @@ footer .bigname span{color:var(--accent)}
       <label class="check wide-f"><input type="checkbox" name="privacy" required><span>Ho letto l'<a href="https://www.goldsailravenna.com/informativa-sulla-privacy.html">informativa privacy</a> e autorizzo Gold Sail a ricontattarmi.</span></label>
       <button class="btn" type="submit">Invia a Elena</button>
     </form>
-    <p class="note rv">Per un ricambio bastano modello, anno e matricola dello scafo: Elena Veronesi controlla la disponibilità e vi richiama. Le vele per C42, C45 e C46 sono già in magazzino a Marina di Ravenna.</p>
+    <figure class="dock rv">
+      <img src="img/w-cruiser37.jpg" width="1024" height="683" alt="Una coppia sale a bordo di una Bavaria Cruiser dal pontile, con l'aiuto dello staff" loading="lazy">
+      <figcaption>La consegna in banchina a Marinara.</figcaption>
+    </figure>
   </section>
 
   <section class="about" id="storia" aria-labelledby="storia-h">
-    <h2 id="storia-h" class="disp rv">Una smodata passione</h2>
+    <h2 id="storia-h" class="disp rv">Dal 470 a Bavaria</h2>
     <dl class="facts rv">
       <div><dt>Fondata da</dt><dd>Giorgio Capra</dd></div>
       <div><dt>Bavaria dal</dt><dd>2003</dd></div>
@@ -476,7 +487,7 @@ footer .bigname span{color:var(--accent)}
     </div>
     <figure class="rv">
       <img src="img/w-capra.jpg" width="1296" height="868" alt="Giorgio Capra in barca a vela con la moglie e il figlio Michele" loading="lazy">
-      <figcaption>Giorgio Capra con la moglie e Michele, a vela.</figcaption>
+      <figcaption>Giorgio Capra con la moglie e Michele, in regata, negli anni delle derive.</figcaption>
     </figure>
     <div class="records">
       <div class="rv">
@@ -495,6 +506,15 @@ footer .bigname span{color:var(--accent)}
           <li><span>X-Yachts e altri cantieri</span><span>vendita</span></li>
           <li><span>Importatore Bavaria</span><span>dal 2003</span></li>
           <li><span>Nord Est e Adriatico</span><span>oggi</span></li>
+        </ul>
+      </div>
+      <div class="rv" style="--i:2">
+        <h3>In sede</h3>
+        <ul>
+          <li><span>Ufficio vendite</span><span>nuovo e usato</span></li>
+          <li><span>Assistenza</span><span>in porto</span></li>
+          <li><span>Magazzino</span><span>ricambi originali</span></li>
+          <li><span>Il bar dei regatanti</span><span>sempre aperto</span></li>
         </ul>
       </div>
     </div>
