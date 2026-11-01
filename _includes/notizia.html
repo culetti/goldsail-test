@@ -1,0 +1,5 @@
+{%- assign n = include.n -%}
+<article class="bezel rv"><div class="core"><a href="{{ n.url | relative_url }}">
+  {% if n.immagine and n.immagine != "" %}<img src="{{ n.immagine | relative_url }}" alt="" loading="lazy">{% endif %}
+  <div class="info"><time datetime="{{ n.date | date: '%Y-%m-%d' }}">{{ n.date | date: "%d/%m/%Y" }}</time><h3>{{ n.title }}</h3><p>{{ n.sommario }}</p></div>
+</a></div></article>

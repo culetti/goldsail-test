@@ -1,0 +1,101 @@
+# Pannello di gestione del sito Gold Sail Ravenna (Sveltia CMS, compatibile con Decap CMS).
+# Le modifiche vengono salvate come file nel repository GitHub e il sito si ripubblica da solo in circa un minuto.
+backend:
+  name: github
+  repo: culetti/goldsail-test
+  branch: main
+  commit_messages:
+    create: "Nuovo {{collection}}: {{slug}}"
+    update: "Aggiornato {{collection}}: {{slug}}"
+    delete: "Eliminato {{collection}}: {{slug}}"
+    uploadMedia: "Caricata foto {{path}}"
+    deleteMedia: "Eliminata foto {{path}}"
+
+locale: it
+site_url: https://culetti.github.io/goldsail-test/
+display_url: https://culetti.github.io/goldsail-test/
+logo_url: https://culetti.github.io/goldsail-test/img/site/logo.png
+media_folder: img/barche
+public_folder: /img/barche
+
+collections:
+  - name: barche
+    label: Barche in vendita
+    label_singular: Barca
+    folder: _barche
+    create: true
+    slug: "{{title}}"
+    summary: "{{title}} · {{condizione}} · {{stato}}"
+    sortable_fields: [title, anno, lunghezza, prezzo]
+    view_filters:
+      - { label: Nuove, field: condizione, pattern: nuova }
+      - { label: Usate, field: condizione, pattern: usata }
+      - { label: In trattativa, field: stato, pattern: trattativa }
+      - { label: Vendute, field: stato, pattern: venduta }
+    fields:
+      - { label: Nome della barca, name: title, widget: string, hint: "Es. Bavaria 38 Cruiser" }
+      - { label: Condizione, name: condizione, widget: select, options: [ { label: Nuova, value: nuova }, { label: Usata, value: usata } ], default: usata }
+      - { label: Tipo, name: tipo, widget: select, options: [ { label: Vela, value: vela }, { label: Motore, value: motore } ], default: vela }
+      - { label: Stato, name: stato, widget: select, options: [ { label: Disponibile, value: disponibile }, { label: In trattativa, value: trattativa }, { label: "Venduta (sparisce dal sito)", value: venduta } ], default: disponibile }
+      - { label: Cantiere, name: cantiere, widget: string }
+      - { label: Anno, name: anno, widget: number, value_type: int }
+      - { label: Lunghezza in metri, name: lunghezza, widget: number, value_type: float, step: 0.01, hint: "Serve per il cursore «Che misura cercate?» e per l'ordinamento" }
+      - { label: Lunghezza come appare sul sito, name: lunghezza_testo, widget: string, hint: "Es. 12,13 m (scafo 11,91 m)" }
+      - { label: Prezzo in euro, name: prezzo, widget: number, value_type: int, default: 0, hint: "Lasciate 0 per «Prezzo su richiesta» o «Trattativa riservata»" }
+      - { label: Nota sul prezzo, name: prezzo_testo, widget: string, required: false, hint: "Es. IVA compresa, Trattativa riservata, Prezzo su richiesta" }
+      - { label: In evidenza nella home, name: in_evidenza, widget: boolean, default: false, hint: "Solo per le nuove: la barca in evidenza ha la scheda grande" }
+      - { label: Foto di copertina, name: copertina, widget: image }
+      - { label: Galleria foto, name: foto, widget: list, field: { label: Foto, name: foto, widget: image } }
+      - { label: Scheda tecnica PDF, name: scheda_pdf, widget: file, required: false }
+      - { label: Descrizione, name: body, widget: markdown }
+
+  - name: novita
+    label: Novità
+    label_singular: Novità
+    folder: _novita
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: Titolo, name: title, widget: string }
+      - { label: Data, name: date, widget: datetime, date_format: "DD/MM/YYYY", time_format: false, format: "YYYY-MM-DD" }
+      - { label: Immagine, name: immagine, widget: image, required: false }
+      - { label: Sommario, name: sommario, widget: string, hint: "Una riga che appare nell'elenco" }
+      - { label: Testo, name: body, widget: markdown }
+
+  - name: impostazioni
+    label: Impostazioni
+    files:
+      - name: sito
+        label: Annuncio, moduli e contatti
+        file: _data/sito.yml
+        fields:
+          - label: Annuncio in evidenza nella home
+            name: annuncio
+            widget: object
+            fields:
+              - { label: Mostra l'annuncio, name: attivo, widget: boolean, default: true }
+              - { label: Etichetta, name: etichetta, widget: string }
+              - { label: Titolo, name: titolo, widget: string }
+              - { label: Testo, name: testo, widget: string }
+              - { label: Testo del bottone, name: bottone, widget: string }
+              - { label: Collegamento, name: link, widget: string, hint: "Es. /barche/bavaria-c42/" }
+          - label: Moduli di richiesta
+            name: moduli
+            widget: object
+            fields:
+              - { label: Indirizzo Formspree, name: endpoint, widget: string, required: false, hint: "Es. https://formspree.io/f/abcdwxyz. Vuoto: i moduli aprono il programma di posta." }
+              - { label: Email per le richieste generali, name: email_info, widget: string }
+              - { label: Email per i ricambi, name: email_ricambi, widget: string }
+          - label: Contatti
+            name: contatti
+            widget: object
+            fields:
+              - { label: Indirizzo, name: indirizzo, widget: string }
+              - { label: Link alla mappa, name: mappa, widget: string }
+              - { label: Telefono ufficio, name: ufficio, widget: string }
+              - { label: Cellulare Michele, name: michele, widget: string }
+              - { label: Email, name: email, widget: string }
+              - { label: Facebook, name: facebook, widget: string }
+              - { label: Instagram, name: instagram, widget: string }
+              - { label: YouTube, name: youtube, widget: string }

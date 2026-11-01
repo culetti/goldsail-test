@@ -1,0 +1,15 @@
+---
+layout: default
+---
+<main>
+  <section class="page-top">
+    <div class="wrap article">
+      <a class="back" href="{{ '/novita/' | relative_url }}"><svg><use href="#left"/></svg>Tutte le novità</a>
+      <span class="tag" style="display:flex;width:max-content">{{ page.date | date: "%d/%m/%Y" }}</span>
+      <h1 class="serif">{{ page.title }}</h1>
+      {% if page.immagine and page.immagine != "" %}<figure class="bezel"><div class="core"><img src="{{ page.immagine | relative_url }}" alt=""></div></figure>{% endif %}
+      <div class="body">{{ content }}</div>
+    </div>
+  </section>
+  {% include contatti.html %}
+</main>

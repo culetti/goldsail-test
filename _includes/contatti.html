@@ -1,0 +1,18 @@
+{%- assign c = site.data.sito.contatti -%}
+<section class="contact" id="contatti" aria-labelledby="cont-h">
+  <div class="wrap">
+    <div class="bezel dark rv"><div class="core">
+      <div>
+        <span class="tag">Contatti</span>
+        <h2 id="cont-h" class="serif">Ci vediamo al <em>porto.</em></h2>
+        <a class="mail" href="mailto:{{ c.email }}?subject=Richiesta%20dal%20sito">{{ c.email }}</a>
+      </div>
+      <dl>
+        <div><dt>Sede</dt><dd><a href="{{ c.mappa }}">{{ c.indirizzo }}</a></dd></div>
+        <div><dt>Ufficio</dt><dd><a href="tel:+39{{ c.ufficio | remove: ' ' }}">{{ c.ufficio }}</a></dd></div>
+        <div><dt>Michele Capra</dt><dd><a href="tel:+39{{ c.michele | remove: ' ' }}">{{ c.michele }}</a></dd></div>
+        <div><dt>Social</dt><dd><a href="{{ c.facebook }}">Facebook</a> · <a href="{{ c.instagram }}">Instagram</a> · <a href="{{ c.youtube }}">YouTube</a></dd></div>
+      </dl>
+    </div></div>
+  </div>
+</section>

@@ -1,0 +1,2 @@
+{%- assign b = include.b -%}
+<a class="row" href="{{ b.url | relative_url }}" data-len="{{ b.lunghezza }}" data-img="{{ b.copertina | relative_url }}"><span class="n">{{ b.title }}{% if b.stato == "trattativa" %}<small>in trattativa</small>{% endif %}</span><span class="y">{{ b.anno }}</span><span class="l">{{ b.lunghezza | replace: ".", "," }} m</span><span class="go"><svg><use href="#arr"/></svg></span></a>

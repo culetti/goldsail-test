@@ -1,0 +1,40 @@
+---
+layout: default
+title: Barche in vendita
+sommario: "Bavaria nuove in pronta consegna e barche usate selezionate da Gold Sail Ravenna, con foto, dati e prezzi."
+---
+{%- assign tutte = site.barche | where_exp: "b", "b.stato != 'venduta'" -%}
+{%- assign nuove = tutte | where: "condizione", "nuova" -%}
+{%- assign usate = tutte | where: "condizione", "usata" | sort: "lunghezza" -%}
+<main>
+  <section class="page-top" style="padding-bottom:clamp(80px,9vw,140px)">
+    <div class="wrap">
+      <div class="head">
+        <div><span class="tag">Barche in vendita</span><h1 class="serif" style="font-size:clamp(46px,6vw,96px)">Nuove e <em>usate.</em></h1></div>
+        <p>{{ nuove.size }} Bavaria nuove in pronta consegna e {{ usate.size }} barche usate, tutte a Marina di Ravenna o in arrivo.</p>
+      </div>
+      <div class="filters" role="group" aria-label="Filtra le barche">
+        <button class="chip" type="button" data-f="tutte" aria-pressed="true">Tutte</button>
+        <button class="chip" type="button" data-f="nuova" aria-pressed="false">Nuove</button>
+        <button class="chip" type="button" data-f="usata" aria-pressed="false">Usate</button>
+        <button class="chip" type="button" data-f="vela" aria-pressed="false">Vela</button>
+        <button class="chip" type="button" data-f="motore" aria-pressed="false">Motore</button>
+        <label class="vh" for="sort">Ordina</label>
+        <select class="sortsel" id="sort">
+          <option value="std">In evidenza</option>
+          <option value="len-a">Lunghezza crescente</option>
+          <option value="len-d">Lunghezza decrescente</option>
+          <option value="pr-a">Prezzo crescente</option>
+          <option value="pr-d">Prezzo decrescente</option>
+          <option value="an-d">Più recenti</option>
+        </select>
+      </div>
+      <div class="cards" id="cards">
+        {% for b in nuove %}{% include card.html b=b %}{% endfor %}
+        {% for b in usate %}{% include card.html b=b %}{% endfor %}
+      </div>
+      <p class="empty" id="empty" hidden>Nessuna barca con questi filtri.</p>
+    </div>
+  </section>
+  {% include contatti.html %}
+</main>

@@ -1,0 +1,3 @@
+{%- assign b = include.b -%}
+{%- if b.prezzo and b.prezzo > 0 -%}{{ b.prezzo | divided_by: 1000 }}.{{ b.prezzo | modulo: 1000 | prepend: '000' | slice: -3, 3 }} €{%- if b.prezzo_testo != "" %} <small>{{ b.prezzo_testo }}</small>{% endif -%}
+{%- else -%}{{ b.prezzo_testo | default: "Prezzo su richiesta" }}{%- endif -%}

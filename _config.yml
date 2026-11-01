@@ -1,0 +1,21 @@
+title: "Gold Sail Ravenna"
+description: "Gold Sail Ravenna, importatore Bavaria Yachts dal 2003: barche a vela nuove in pronta consegna, usato selezionato, ricambi e assistenza a Marina di Ravenna."
+url: "https://culetti.github.io"
+baseurl: "/goldsail-test"
+lang: it
+timezone: Europe/Rome
+markdown: kramdown
+permalink: /novita/:title/
+collections:
+  barche:
+    output: true
+    permalink: /barche/:name/
+  novita:
+    output: true
+    permalink: /novita/:name/
+defaults:
+  - scope: { path: "", type: barche }
+    values: { layout: barca }
+  - scope: { path: "", type: novita }
+    values: { layout: articolo }
+exclude: [README.md, Gemfile, Gemfile.lock, vendor]

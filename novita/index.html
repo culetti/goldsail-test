@@ -1,0 +1,16 @@
+---
+layout: default
+title: Novità
+sommario: "Notizie, arrivi e saloni nautici di Gold Sail Ravenna."
+---
+{%- assign news = site.novita | sort: "date" | reverse -%}
+<main>
+  <section class="page-top" style="padding-bottom:clamp(80px,9vw,140px)">
+    <div class="wrap">
+      <div class="head"><div><span class="tag">Novità</span><h1 class="serif" style="font-size:clamp(46px,6vw,96px)">Dal <em>porto.</em></h1></div>
+      <p>Arrivi, barche appena entrate nell'usato, saloni nautici e offerte del magazzino.</p></div>
+      <div class="news">{% for n in news %}{% include notizia.html n=n %}{% endfor %}</div>
+    </div>
+  </section>
+  {% include contatti.html %}
+</main>

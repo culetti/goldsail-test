@@ -1,0 +1,19 @@
+{%- assign ep = site.data.sito.moduli.endpoint -%}
+{%- assign to = include.to | default: site.data.sito.moduli.email_info -%}
+<form class="js-form" {% if ep != "" %}action="{{ ep }}" method="post" data-endpoint="{{ ep }}"{% else %}action="mailto:{{ to }}?subject={{ include.subject | url_encode }}" method="post" enctype="text/plain"{% endif %}>
+  <input type="hidden" name="_subject" value="{{ include.subject }}">
+  {% if include.barca %}<input type="hidden" name="barca" value="{{ include.barca }}">{% endif %}
+  <label class="wide">Nome e cognome<span class="field"><input name="nome" autocomplete="name" required></span></label>
+  <label>Email<span class="field"><input name="email" type="email" autocomplete="email" required></span></label>
+  <label>Telefono<span class="field"><input name="telefono" type="tel" autocomplete="tel"></span></label>
+  {% if include.ricambi %}
+  <label>Barca e modello<span class="field"><input name="modello" placeholder="Bavaria C42"></span></label>
+  <label>Anno<span class="field"><input name="anno" inputmode="numeric"></span></label>
+  <label class="wide">Matricola HIN o CIN<span class="field"><input name="hin" aria-describedby="hin-d"></span></label>
+  <p class="vh" id="hin-d">La trovate incisa sullo specchio di poppa, a dritta.</p>
+  {% endif %}
+  <label class="wide">{{ include.domanda | default: "Di cosa avete bisogno" }}<span class="field"><textarea name="messaggio">{{ include.testo }}</textarea></span></label>
+  <label class="check wide"><input type="checkbox" name="privacy" required><span>Ho letto l'<a href="https://www.goldsailravenna.com/informativa-sulla-privacy.html">informativa privacy</a> e autorizzo Gold Sail a ricontattarmi.</span></label>
+  <button class="btn gold" type="submit">{{ include.bottone | default: "Invia" }}<span class="ic"><svg><use href="#arr"/></svg></span></button>
+  <p class="ok wide" role="status">Grazie, abbiamo ricevuto la richiesta: vi rispondiamo al più presto.</p>
+</form>

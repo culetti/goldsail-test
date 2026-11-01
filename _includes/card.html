@@ -1,0 +1,8 @@
+{%- assign b = include.b -%}
+<article class="bezel card" data-cond="{{ b.condizione }}" data-tipo="{{ b.tipo }}" data-len="{{ b.lunghezza }}" data-prezzo="{{ b.prezzo | default: 0 }}" data-anno="{{ b.anno }}"><div class="core"><a href="{{ b.url | relative_url }}">
+  <div class="pic"><img src="{{ b.copertina | relative_url }}" alt="{{ b.title }}" loading="lazy"></div>
+  <div class="info">
+    <h3>{{ b.title }}</h3>
+    <div class="meta"><span>{% if b.condizione == "nuova" %}<span class="state nuova">Nuova</span>{% else %}{{ b.anno }} · {{ b.lunghezza | replace: ".", "," }} m{% endif %}{% if b.stato == "trattativa" %} <span class="state trattativa">in trattativa</span>{% elsif b.stato == "venduta" %} <span class="state venduta">venduta</span>{% endif %}</span><b>{% include prezzo.html b=b %}</b></div>
+  </div>
+</a></div></article>

@@ -1,0 +1,21 @@
+annuncio:
+  attivo: true
+  etichetta: "In evidenza"
+  titolo: "Bavaria C42, pronta per la stagione"
+  testo: "Dodici metri e ottanta, in acqua a Marinara."
+  bottone: "Prezzo e consegna"
+  link: "/barche/bavaria-c42/"
+moduli:
+  # Indirizzo Formspree (es. https://formspree.io/f/abcdwxyz). Se vuoto, i moduli aprono il programma di posta.
+  endpoint: ""
+  email_info: "info@goldsailravenna.com"
+  email_ricambi: "e.veronesi@goldsail.it"
+contatti:
+  indirizzo: "Via Marinara 77, 48122 Marina di Ravenna"
+  mappa: "https://maps.google.com/?q=Via+Marinara+77,+48122+Marina+di+Ravenna"
+  ufficio: "0544 530081"
+  michele: "347 402 2602"
+  email: "info@goldsailravenna.com"
+  facebook: "https://www.facebook.com/goldsail.ravenna.7"
+  instagram: "https://www.instagram.com/gold_sail_ravenna/"
+  youtube: "https://www.youtube.com/channel/UCupH6kz-bESfzOhCx4VjMrQ"

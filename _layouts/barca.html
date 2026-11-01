@@ -1,0 +1,66 @@
+---
+layout: default
+---
+{%- assign b = page -%}
+<main>
+  <section class="page-top">
+    <div class="wrap">
+      <a class="back" href="{{ '/barche/' | relative_url }}"><svg><use href="#left"/></svg>Tutte le barche in vendita</a>
+      <div class="boat-head">
+        <div>
+          <span class="tag">{% if b.condizione == "nuova" %}Nuova, pronta consegna{% else %}Usato {{ b.tipo }}{% endif %}{% if b.stato == "trattativa" %} · in trattativa{% elsif b.stato == "venduta" %} · venduta{% endif %}</span>
+          <h1 class="serif">{{ b.title }}</h1>
+          <p class="lead">{{ b.cantiere }}{% if b.condizione == "usata" %}, anno {{ b.anno }}{% endif %}</p>
+          <dl class="specs">
+            <div><dt>Lunghezza</dt><dd>{{ b.lunghezza_testo }}</dd></div>
+            <div><dt>{% if b.condizione == "nuova" %}Consegna{% else %}Anno{% endif %}</dt><dd>{% if b.condizione == "nuova" %}Su richiesta{% else %}{{ b.anno }}{% endif %}</dd></div>
+            <div><dt>Cantiere</dt><dd>{{ b.cantiere }}</dd></div>
+            <div><dt>Ormeggio</dt><dd>Marina di Ravenna</dd></div>
+          </dl>
+          <p class="price">{% include prezzo.html b=b %}</p>
+          <div class="ctas">
+            <a class="btn" href="#richiesta">Chiedi informazioni<span class="ic"><svg><use href="#arr"/></svg></span></a>
+            <a class="btn ghost" href="tel:+39{{ site.data.sito.contatti.michele | remove: ' ' }}">Chiama Michele<span class="ic"><svg><use href="#phone"/></svg></span></a>
+            {% if b.scheda_pdf and b.scheda_pdf != "" %}<a class="btn ghost" href="{{ b.scheda_pdf | relative_url }}" download>Scheda tecnica PDF<span class="ic"><svg><use href="#doc"/></svg></span></a>{% endif %}
+          </div>
+        </div>
+        <div class="gal" data-gallery>
+          <div class="bezel cover"><div class="core"><img id="gal-main" src="{{ b.foto.first | default: b.copertina | relative_url }}" alt="{{ b.title }}, foto 1 di {{ b.foto.size }}" fetchpriority="high"></div></div>
+          {% if b.foto.size > 1 %}
+          <div class="thumbs">
+            {% for f in b.foto %}<button type="button" data-src="{{ f | relative_url }}" aria-label="Foto {{ forloop.index }} di {{ b.foto.size }}" {% if forloop.first %}aria-current="true"{% endif %}><img src="{{ f | relative_url }}" alt="" loading="lazy"></button>{% endfor %}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:clamp(48px,6vw,96px)">
+    <div class="wrap boat-body">
+      <div class="bezel desc"><div class="core">
+        <h2>Descrizione</h2>
+        {{ content }}
+      </div></div>
+      <div class="bezel form dark" id="richiesta"><div class="core">
+        <h3>Interessati alla {{ b.title }}?</h3>
+        <p class="lead">Vi mandiamo foto in più, i dati completi e vi diamo appuntamento in banchina a Marinara.</p>
+        {% capture subj %}Richiesta per {{ b.title }}{% if b.condizione == "usata" %} ({{ b.anno }}){% endif %}{% endcapture %}
+        {% capture testo %}Vorrei ricevere informazioni sulla {{ b.title }}.{% endcapture %}
+        {% include form.html subject=subj barca=b.title domanda="Messaggio" testo=testo bottone="Invia la richiesta" %}
+      </div></div>
+    </div>
+  </section>
+
+  {%- assign altre = site.barche | where: "condizione", b.condizione | where_exp: "x", "x.url != b.url" | where_exp: "x", "x.stato != 'venduta'" -%}
+  {% if altre.size > 0 %}
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="head"><div><span class="tag">Altre barche</span><h2 class="serif">Potrebbero <em>piacervi.</em></h2></div>
+      <a class="btn ghost" href="{{ '/barche/' | relative_url }}">Tutte<span class="ic"><svg><use href="#arr"/></svg></span></a></div>
+      <div class="cards">{% for x in altre limit:3 %}{% include card.html b=x %}{% endfor %}</div>
+    </div>
+  </section>
+  {% endif %}
+  <dialog class="lb" id="lb" aria-label="Foto ingrandita"><img src="" alt=""><div class="bar"><button class="round" type="button" data-step="-1" aria-label="Foto precedente"><svg><use href="#left"/></svg></button><button class="round" type="button" data-close aria-label="Chiudi"><svg><use href="#close"/></svg></button><button class="round" type="button" data-step="1" aria-label="Foto successiva"><svg><use href="#right"/></svg></button></div></dialog>
+</main>
