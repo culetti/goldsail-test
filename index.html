@@ -57,20 +57,24 @@ ul,ol{margin:0;padding:0;list-style:none}
 .btn:active{transform:translateY(2px)}
 
 /* ---------- HERO ---------- */
-.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--bg)}
+.hero{position:relative;height:100svh;min-height:640px;overflow:hidden;background:var(--bg);display:flex;flex-direction:column}
 .hero-top{position:relative;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;padding:24px var(--m) 0}
 .hero-top .logo{display:block;width:132px}
 .hero-top nav ul{display:flex;gap:28px}
 .hero-top nav a{text-decoration:underline;text-decoration-color:transparent;text-decoration-thickness:2px;text-underline-offset:6px;font-weight:500;padding:6px 0;transition:text-decoration-color .2s var(--ease)}
 .hero-top nav a:hover{text-decoration-color:var(--accent)}
-.hero-copy{position:relative;z-index:2;padding:72px var(--m) 0;max-width:calc(34ch + 2*var(--m) + 4ch)}
+.hero-mid{position:relative;z-index:2;flex:1;display:grid;grid-template-columns:minmax(0,42%) 1fr;column-gap:clamp(24px,4vw,64px);padding:40px 0 0 var(--m);margin-bottom:calc(27.6vw + 40px);min-height:0}
+.hero-pic{margin:0;min-height:0;overflow:hidden}
+.hero-pic img{width:100%;height:100%;object-fit:cover;object-position:40% 55%;animation:drift 28s ease-in-out infinite alternate}
+.hero-copy{align-self:center;padding:0 0 8px;max-width:calc(34ch + 4ch)}
 .hero-copy .lead{font-size:var(--step-lead);font-weight:500;line-height:1.25;max-width:22ch}
 .hero-copy p{margin-top:16px;max-width:42ch}
 .hero-copy .btn{margin-top:32px}
-.monument{position:absolute;left:-5vw;bottom:-0.07em;margin:0;font-size:clamp(300px,35vw,760px);white-space:nowrap;color:var(--ink);line-height:.8;letter-spacing:-0.035em;transform-origin:50% 100%;pointer-events:none;user-select:none}
+.monument{position:absolute;left:-5vw;bottom:-0.07em;margin:0;font-size:clamp(300px,35vw,760px);white-space:nowrap;color:var(--ink);line-height:.8;letter-spacing:-0.035em;transform-origin:50% 100%;user-select:none}
 .monument b{font-weight:inherit;color:var(--accent)}
 .monument b.pic{color:transparent;background:url(img/s-c42.jpg) 50% 50%/cover no-repeat;-webkit-background-clip:text;background-clip:text} /* taste-skill-ignore: la fotografia dentro la lettera è il dispositivo chiesto dalla direzione "name-as-monument" */
 @supports not (background-clip:text){.monument b.pic{color:var(--accent);background:none}} /* taste-skill-ignore: ripiego senza foto */
+.monument>span[aria-hidden]{display:inline-block;vertical-align:top}
 .monument br.ph{display:none}
 @supports (animation-timeline:view()){
   .monument{animation:sink linear both;animation-timeline:view();animation-range:exit 0% exit 100%}
@@ -212,6 +216,18 @@ footer .bigname span{color:var(--accent)}
   .monument,footer .bigname,.run .wide img{animation:none}
 }
 
+/* schermi più quadrati (iPad in orizzontale): il nome cresce e il testo pure */
+@media (min-width:701px) and (max-aspect-ratio:1.55){
+  .monument{font-size:clamp(300px,40vw,760px)}
+  .hero-mid{margin-bottom:calc(31.6vw + 40px)}
+  .hero-copy .lead{font-size:clamp(1.25rem,2vw,1.75rem)}
+  .hero-mid{padding-top:24px}
+}
+/* tablet in verticale: il nome torna a una riga intera */
+@media (min-width:701px) and (max-aspect-ratio:1){
+  .monument{font-size:clamp(300px,35vw,760px)}
+  .hero-mid{margin-bottom:calc(27.6vw + 40px)}
+}
 /* ---------- tablet ---------- */
 @media (max-width:1000px){
   .service .g1{grid-column:1/5}.service .g2{grid-column:5/9}.service .g3{grid-column:9/13}
@@ -230,9 +246,10 @@ footer .bigname span{color:var(--accent)}
   .hero-top .logo{width:112px}
   .hero-top nav ul{display:none}
   .hero-top nav .menu{display:inline-block}
-  .hero-copy{padding:48px 20px 0;max-width:none}
-  .hero{height:auto;min-height:100svh;display:flex;flex-direction:column}
-  .hero-copy{padding-bottom:150px}
+  .hero{height:auto;min-height:100svh}
+  .hero-mid{grid-template-columns:1fr;padding:40px 0 0 20px;margin-bottom:0;row-gap:40px}
+  .hero-copy{max-width:none;padding-right:20px}
+  .hero-pic{aspect-ratio:4/3;margin-bottom:24px}
   .monument{position:relative;left:-3vw;bottom:auto;margin:auto 0 -0.06em;font-size:52vw;line-height:.8}
   .monument br.ph{display:inline}
   .showcase{grid-template-columns:1fr;min-height:0}
@@ -285,12 +302,17 @@ footer .bigname span{color:var(--accent)}
       <a class="menu" href="#menu-mobile">Menu</a>
     </nav>
   </div>
-  <div class="hero-copy">
-    <p class="lead rv">Bavaria Yachts a Marina di Ravenna</p>
-    <p class="rv" style="--i:1">Importatori dal 2003: barche a vela nuove in pronta consegna, usato scelto e preparato da noi, ricambi originali e assistenza in Via Marinara 77.</p>
-    <a class="btn rv" style="--i:2" href="#nuove">Vedi le barche in consegna</a>
+  <div class="hero-mid">
+    <div class="hero-copy">
+      <p class="lead rv">Bavaria Yachts a Marina di Ravenna</p>
+      <p class="rv" style="--i:1">Importatori dal 2003: barche a vela nuove in pronta consegna, usato scelto e preparato da noi, ricambi originali e assistenza in Via Marinara 77.</p>
+      <a class="btn rv" style="--i:2" href="#nuove">Vedi le barche in consegna</a>
+    </div>
+    <figure class="hero-pic">
+      <img src="img/w-c42-ex-15.jpg" width="1706" height="1122" alt="Bavaria C42 a vela lungo una costa rocciosa, con l'equipaggio in pozzetto" fetchpriority="high">
+    </figure>
   </div>
-  <h1 class="monument disp"><span aria-hidden="true">Gold<br class="ph"><b class="pic">s</b>ail</span><span class="vh">Gold Sail Ravenna</span></h1>
+  <h1 class="monument disp" aria-label="Gold Sail Ravenna"><span aria-hidden="true">Gold<br class="ph"><b>s</b>ail</span></h1>
 </header>
 
 <main>
